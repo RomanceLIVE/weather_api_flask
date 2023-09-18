@@ -3,13 +3,13 @@ import pandas as pd
 
 app = Flask(__name__)
 
-
+stations = pd.read_csv("data_small/stations.txt", skiprows=17)
 
 
 @app.route("/")
 # add /home to the url (http://127.0.0.1:5000/) to see the home page
 def home():
-    return render_template("home.html")
+    return render_template("home.html", data=stations.to_html())
     # flask is configured to look for templates in the templates folder
 
 
